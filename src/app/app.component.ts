@@ -28,5 +28,9 @@ import { trigger, state, style } from '@angular/animations';
   ]
 })
 export class AppComponent {
-  title = 'app';
+  clickInfo = 'default';
+
+  onClickInfo(){
+   this.clickInfo = (this.clickInfo == 'default' ? 'clicked' : 'default');
+  }
 }

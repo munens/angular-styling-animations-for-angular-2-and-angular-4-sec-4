@@ -1,5 +1,26 @@
 <!-- property binding: assign a state to our div element -->
-<div [@clickedState]="'default'">
-
+<p>Applied state from trigger</p>
+<div
+  [@clickedState]="'default'"
+>
 </div>
 
+<hr>
+
+<!-- Click listener used change the value of string 'clickInfo' to 'clicked', which is ofcourse a state defined within our trigger.
+     - that will change the state to this div-element. -->
+<p>Click listener used to change state:</p>
+<div
+  (click) = "clickInfo = 'clicked'"
+  [@clickedState]="clickInfo"
+>
+</div>
+
+<hr>
+
+<p>function used to change state</p>
+<div
+(click) = "onClickInfo()"
+[@clickedState]="clickInfo"
+>
+</div>
