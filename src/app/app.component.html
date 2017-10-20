@@ -1,8 +1,7 @@
 <!-- property binding: assign a state to our div element -->
 <p>Applied state from trigger</p>
 <div
-  [@clickedState]="'default'"
->
+  [@clickedState]="'default'">
 </div>
 
 <hr>
@@ -12,15 +11,13 @@
 <p>Click listener used to change state:</p>
 <div
   (click) = "clickInfo = 'clicked'"
-  [@clickedState]="clickInfo"
->
+  [@clickedState]="clickInfo">
 </div>
 
 <hr>
 
 <p>function used to change state</p>
 <div
-(click) = "onClickInfo()"
-[@clickedState]="clickInfo"
->
+  (click) = "onClickInfo()"
+  [@clickedState]="clickInfo">
 </div>

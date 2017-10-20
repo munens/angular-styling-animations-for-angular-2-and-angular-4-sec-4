@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { trigger, state, style } from '@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,14 @@ import { trigger, state, style } from '@angular/animations';
         backgroundColor: 'blue',
         width: '300px',
         height: '50px'
-      }))
+      })),
+
+      // how to transition between states: - use the transition module:
+      // i). 1st argument describes when this transition should be applied: multiple transitions maybe applied for different states.
+      // ii). 2nd argument what should happen once the animation is fired.
+      //      - 1st argument of animate method takes 3 arguments in one string: i). duration, ii). initial delay and iii). timing function.
+      //      - 2nd argument (optional) defines the styling after our animation is done.
+      transition('default => clicked', animate('200ms 500ms ease-in'))
     ])
     // a trigger has multiple states and each state has a style or array of styles.
   ]
