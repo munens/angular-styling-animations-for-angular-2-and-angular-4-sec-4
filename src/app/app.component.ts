@@ -41,18 +41,42 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       // ii). 2nd argument what should happen once the animation is fired.
       //      - 1st argument of animate method takes 3 arguments in one string: i). duration, ii). initial delay and iii). timing function.
       //      - 2nd argument (optional) defines the styling after our animation is done.
-      transition('default => clicked', animate('200ms 500ms ease-in')),
+      transition('default => clicked', animate('1s 500ms ease-in')),
 
       // we can use more than one transition statement that allows us to perform multiple transitions:
       // - using just an integer as an argument refers to 300ms duration, 0 delay and a linear timing function. Can also simply pass a string '300ms'.
-      transition('clicked => default', animate(300))
+      transition('clicked => default', animate(300)),
 
+      //transition('mousedown => clicked', animate(300)),
+      //transition('clicked => mousedown', animate(300)),
+
+      // ^ is the same as:
+      transition('mousedown <=> default', animate(300))
+    
+
+    ]),
+    trigger('numberEnteredState', [
+      state('selected', style({
+        border: '1px solid black',
+        padding: '5px'
+      })),
+      state('unselected', style({
+        border: '1px solid blue',
+        padding: '4px',
+        backgroundColor: 'lightBlue'
+      })),
+      transition('unselected => selected', animate(500))
     ])
     
   ]
 })
 export class AppComponent {
   clickInfo = 'default';
+
+  // using more than one variable below allows us to apply different states to different html elements.
+  paragraphInfo = 'default';
+
+  numberEntered;
 
   onClickInfo(){
    this.clickInfo = (this.clickInfo == 'default' ? 'clicked' : 'default');

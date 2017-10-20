@@ -11,7 +11,6 @@
 <p>Click listener used to change state:</p>
 <div
   (click) = "clickInfo = 'clicked'"
-  (mousedown) = "clickInfo = 'mousedown'"
   [@clickedState]="clickInfo">
 </div>
 
@@ -22,3 +21,33 @@
   (click) = "onClickInfo()"
   [@clickedState]="clickInfo">
 </div>
+
+<hr>
+
+<p>mousedown handler to change state:</p>
+<div
+  (click) = "onClickInfo()"
+  (mousedown) = "clickInfo = 'mousedown'"
+  [@clickedState]="clickInfo">
+</div>
+
+<hr>
+
+<p 
+  (click)="paragraphInfo = 'clicked'"
+  [@clickedState]="paragraphInfo">paragraph text
+</p>
+
+<hr>
+<input type="number" (input)="numberEntered = $event.target.value">
+<br><br>
+<!-- highlight the correct span based on whether the input above equals the span value in between the span html elements: -->
+<span [@numberEnteredState]="numberEntered == 1 ? 'selected' : 'unselected'">1</span>
+<span [@numberEnteredState]="numberEntered == 2 ? 'selected' : 'unselected'">2</span>
+<span [@numberEnteredState]="numberEntered == 3 ? 'selected' : 'unselected'">3</span>
+<span [@numberEnteredState]="numberEntered == 4 ? 'selected' : 'unselected'">4</span>
+<span [@numberEnteredState]="numberEntered == 5 ? 'selected' : 'unselected'">5</span>
+<span [@numberEnteredState]="numberEntered == 6 ? 'selected' : 'unselected'">6</span>
+<span [@numberEnteredState]="numberEntered == 7 ? 'selected' : 'unselected'">7</span>
+<span [@numberEnteredState]="numberEntered == 8 ? 'selected' : 'unselected'">8</span>
+<span [@numberEnteredState]="numberEntered == 9 ? 'selected' : 'unselected'">9</span>
