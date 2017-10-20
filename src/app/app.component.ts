@@ -55,6 +55,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     
 
     ]),
+
     trigger('numberEnteredState', [
       state('selected', style({
         border: '1px solid black',
@@ -65,11 +66,32 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         padding: '4px',
         backgroundColor: 'lightBlue'
       })),
-      transition('unselected => selected', animate(500))
+      transition('unselected => selected', [
+        // an array here allows us to perform various transtion steps - before our final state of 'selected' is reached':
+
+        // below we can place a style that can be added before the animation takes place
+        style({
+          border: '2px solid black',
+          padding: '4px'
+        }),
+
+        // animate here allows the step above to be seen. 
+        animate(500),
+
+        // we can add yet more steps after the animation above happens: - now the animation will transition into the following styling:
+        // angular does not track the last state we had and therefore border and padding wont appear in this next transition.
+        style({
+          backgroundColor: 'red'
+        }),
+
+        // without the animate below it is hard to see the step above take place:
+        animate(500)
+      ])
     ])
     
   ]
 })
+
 export class AppComponent {
   clickInfo = 'default';
 
