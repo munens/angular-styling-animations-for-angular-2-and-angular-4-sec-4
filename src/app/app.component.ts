@@ -24,8 +24,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         height: '50px'
       })),
 
+      // If this state here is referenced from the same div that other states are called from it is important that properties from prev. states are maintained. 
+      // i.e. If the height and width below did not exist and we wanted to apply it before/after one of the other states were referenced, this state below would 
+      //      be called without the height and width properties that existed in prev. states.
+      state('mousedown', style({
+        backgroundColor: 'red',
+        border: '1px solid black',
+        height: '100px',
+        width: '100px'
+      })),
+
+      // a trigger has multiple states and each state has a style or array of styles.
+
       // how to transition between states: - use the transition module:
-      // i). 1st argument describes when this transition should be applied: multiple transitions maybe applied for different states.
+      //  i). 1st argument describes when this transition should be applied: multiple transitions maybe applied for different states.
       // ii). 2nd argument what should happen once the animation is fired.
       //      - 1st argument of animate method takes 3 arguments in one string: i). duration, ii). initial delay and iii). timing function.
       //      - 2nd argument (optional) defines the styling after our animation is done.
@@ -36,7 +48,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       transition('clicked => default', animate(300))
 
     ])
-    // a trigger has multiple states and each state has a style or array of styles.
+    
   ]
 })
 export class AppComponent {
