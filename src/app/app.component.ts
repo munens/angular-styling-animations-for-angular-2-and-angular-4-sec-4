@@ -29,7 +29,12 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       // ii). 2nd argument what should happen once the animation is fired.
       //      - 1st argument of animate method takes 3 arguments in one string: i). duration, ii). initial delay and iii). timing function.
       //      - 2nd argument (optional) defines the styling after our animation is done.
-      transition('default => clicked', animate('200ms 500ms ease-in'))
+      transition('default => clicked', animate('200ms 500ms ease-in')),
+
+      // we can use more than one transition statement that allows us to perform multiple transitions:
+      // - using just an integer as an argument refers to 300ms duration, 0 delay and a linear timing function. Can also simply pass a string '300ms'.
+      transition('clicked => default', animate(300))
+
     ])
     // a trigger has multiple states and each state has a style or array of styles.
   ]
