@@ -76,15 +76,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         }),
 
         // animate here allows the step above to be seen. 
-        animate(500),
+        animate(500, style({
+          backgroundColor: 'red'
+        })),
 
         // we can add yet more steps after the animation above happens: - now the animation will transition into the following styling:
-        // angular does not track the last state we had and therefore border and padding wont appear in this next transition.
-        style({
+        // angular does not track the last state we had and therefore border and padding wont appear in this next transition. Therefore for every subsequent
+        // style that we have we have to sandwich it inside animates.
+        // if we wanted the style here below to keep track of the prev. style we can make it a second argument of the prev.animate function instead.
+        /*style({
           backgroundColor: 'red'
         }),
+        */
 
-        // without the animate below it is hard to see the step above take place:
+        // without the animate below it is hard to see the step above take place. If we want the above 
         animate(500)
       ])
     ])
