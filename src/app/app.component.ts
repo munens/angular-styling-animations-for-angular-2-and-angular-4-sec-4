@@ -77,13 +77,16 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
         // animate here allows the step above to be seen. 
         animate(500, style({
-          backgroundColor: 'red'
+          backgroundColor: 'red',
+          transform: 'scale(1.1)' // used to increase the size of the object. note: the display property of the html element in question must be of type 'block'.
         })),
 
         // we can add yet more steps after the animation above happens: - now the animation will transition into the following styling:
         // angular does not track the last state we had and therefore border and padding wont appear in this next transition. Therefore for every subsequent
-        // style that we have we have to sandwich it inside animates.
-        // if we wanted the style here below to keep track of the prev. style we can make it a second argument of the prev.animate function instead.
+        // style (i.e. apart from the first) that we have we have to sandwich it inside animates.
+        // if we wanted the style here below to keep track of the prev. style we can make it a second argument of the prev.animate function instead. 
+        // - This will also make the animation smoother as the border and padding properties in the prev. state wont be lost before the background property 
+        //   is then added.
         /*style({
           backgroundColor: 'red'
         }),
